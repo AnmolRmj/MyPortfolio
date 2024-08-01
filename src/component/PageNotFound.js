@@ -17,9 +17,8 @@ const PageNotFound = () => {
           fontWeight: "bold",
           backgroundColor: "grey",
           textAlign: "center",
-
           width: "10%",
-          padding: "10px 20px", // Add padding for better appearance
+          padding: "10px 20px",
         }}
       >
         Back
