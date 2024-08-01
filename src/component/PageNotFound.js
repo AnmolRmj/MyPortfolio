@@ -7,8 +7,23 @@ const PageNotFound = () => {
     navigate(-1);
   };
   return (
-    <div>
-      <button onClick={handleback}>Back</button>
+    <div
+      style={{ display: "flex", justifyContent: "center", marginTop: "15rem" }}
+    >
+      <button
+        onClick={handleback}
+        style={{
+          color: "white",
+          fontWeight: "bold",
+          backgroundColor: "grey",
+          textAlign: "center",
+          justifyItems: "end",
+          width: "10%",
+          padding: "10px 20px", // Add padding for better appearance
+        }}
+      >
+        Back
+      </button>
     </div>
   );
 };
