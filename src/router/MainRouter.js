@@ -3,14 +3,15 @@ import {
   createRoutesFromElements,
   Route,
 } from "react-router-dom";
-import Home from "../component/Home";
-import PageNotFound from "../component/PageNotFound";
+import React from "react";
+import Userlayout from "../component/layout/UserLayout";
+
+const PageNotFound = React.lazy(import("../component/PageNotFound"));
 
 export const MainRouter = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Home />} />
-
+      <Route path="/" element={<Userlayout />} />
       <Route path="/pagenotfound" element={<PageNotFound />} />
     </Route>
   )
