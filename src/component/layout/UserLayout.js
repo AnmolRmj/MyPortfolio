@@ -1,51 +1,23 @@
 import React from "react";
-import { Layout } from "antd";
-const { Header, Footer, Content, Sider } = Layout;
+import { Button } from "antd";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTodos } from "../redux/slice/todo";
 
 const Userlayout = () => {
-  const headerStyle = {
-    textAlign: "center",
-    color: "#fff",
-    height: 64,
-    paddingInline: 48,
-    lineHeight: "64px",
-    backgroundColor: "#4096ff",
-  };
-  const contentStyle = {
-    textAlign: "center",
-    minHeight: 120,
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "#0958d9",
-  };
-
-  const footerStyle = {
-    textAlign: "center",
-    color: "#fff",
-    backgroundColor: "#4096ff",
-  };
-  const layoutStyle = {
-    overflow: "hidden",
-    width: "full",
-    maxWidth: "full",
-  };
-  const siderStyle = {
-    textAlign: "center",
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "#1677ff",
-  };
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  console.log("state", state);
+  if (state.todo.isLoading) {
+    return <h1 className="font-bold ">Loading.......</h1>;
+  }
   return (
-    <Layout style={layoutStyle}>
-      <Header style={headerStyle}>Header</Header>
-      <Layout>
-        <Content style={contentStyle}>Content</Content>
-        <Sider width="25%" style={siderStyle}>
-          Sider
-        </Sider>
-      </Layout>
-      <Footer style={footerStyle}>Footer</Footer>
-    </Layout>
+    <div className="text-gray-700 font-bold justify-center ">
+      <Button onClick={(e) => dispatch(fetchTodos())}>Fetch Todos</Button>
+      {state.todo.data?.map((e) => (
+        <li>{e.title}</li>
+      ))}
+    </div>
   );
 };
 export default Userlayout;
